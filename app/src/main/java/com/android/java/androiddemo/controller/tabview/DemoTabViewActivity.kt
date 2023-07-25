@@ -21,10 +21,20 @@
 
 package com.android.java.androiddemo.controller.tabview
 
+import com.android.java.androiddemo.controller.tabview.home.DemoFragmentHome
+import com.android.java.androidjavatools.R
 import com.android.java.androidjavatools.controller.tabview.TabViewActivity
+import com.android.java.androidjavatools.controller.template.Navigator
 
 class DemoTabViewActivity : TabViewActivity() {
     override fun createNavigator() {
+        mNavigator = Navigator(
+            this, R.id.main_activity_layout
+        )
+
+        mNavigator.declareFragment("home", DemoFragmentHome::class.java)
+
+        mNavigator.showFragment("home")
     }
 
     override fun onEnvironmentConditionCheck(): Boolean {
