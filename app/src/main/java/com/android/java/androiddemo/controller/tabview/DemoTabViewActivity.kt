@@ -21,7 +21,6 @@
 
 package com.android.java.androiddemo.controller.tabview
 
-import com.android.java.androiddemo.controller.tabview.home.DemoFragmentHome
 import com.android.java.androidjavatools.R
 import com.android.java.androidjavatools.controller.tabview.TabViewActivity
 import com.android.java.androidjavatools.controller.template.Navigator
@@ -32,9 +31,9 @@ class DemoTabViewActivity : TabViewActivity() {
             this, R.id.main_activity_layout
         )
 
-        mNavigator.declareFragment("home", DemoFragmentHome::class.java)
+        mNavigator.declareFragment("tab", DemoFragmentTabView::class.java)
 
-        mNavigator.showFragment("home")
+        mNavigator.showFragment("tab")
     }
 
     override fun onEnvironmentConditionCheck(): Boolean {

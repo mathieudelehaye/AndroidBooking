@@ -1,5 +1,5 @@
 //
-//  DemoFragmentHome.kt
+//  DemoFragmentProfileMenu.kt
 //
 //  Created by Mathieu Delehaye on 6/08/2023.
 //
@@ -19,26 +19,9 @@
 //  You should have received a copy of the GNU Affero General Public License along with this program. If not, see
 //  <https://www.gnu.org/licenses/>.
 
-package com.android.java.androiddemo.controller.tabview.home
+package com.android.java.androiddemo.controller.tabview.profile
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.os.Bundle
-import android.view.View
-import com.android.java.androiddemo.R
-import com.android.java.androidjavatools.controller.tabview.home.FragmentHome
-import com.android.java.androidjavatools.controller.template.ResultProvider
+import com.android.java.androidjavatools.controller.tabview.profile.FragmentProfileMenu
 
-class DemoFragmentHome(provider : ResultProvider) : FragmentHome(provider) {
-
-    var mSharedPref : SharedPreferences? = null
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState);
-        mSharedPref = mContext.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
-    }
-
-    override fun searchAndDisplayItems() {
-        TODO("Not yet implemented")
-    }
+class DemoFragmentProfileMenu : FragmentProfileMenu() {
 }

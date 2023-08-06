@@ -1,7 +1,7 @@
 //
-//  DemoFragmentHome.kt
+//  DemoFragmentTabView.kt
 //
-//  Created by Mathieu Delehaye on 6/08/2023.
+//  Created by Mathieu Delehaye on 25/07/2023.
 //
 //  AndroidDemo: A demo mobile app to rent an accommodation, re-using the AndroidJavaTools library.
 //
@@ -19,26 +19,31 @@
 //  You should have received a copy of the GNU Affero General Public License along with this program. If not, see
 //  <https://www.gnu.org/licenses/>.
 
-package com.android.java.androiddemo.controller.tabview.home
+package com.android.java.androiddemo.controller.tabview
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import com.android.java.androiddemo.R
-import com.android.java.androidjavatools.controller.tabview.home.FragmentHome
+import com.android.java.androiddemo.controller.tabview.search.DemoSearchResultProvider
+import com.android.java.androidjavatools.controller.tabview.FragmentTabView
 import com.android.java.androidjavatools.controller.template.ResultProvider
 
-class DemoFragmentHome(provider : ResultProvider) : FragmentHome(provider) {
-
-    var mSharedPref : SharedPreferences? = null
-
+class DemoFragmentTabView : FragmentTabView(DemoSearchResultProvider()) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState);
-        mSharedPref = mContext.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
+        super.onViewCreated(view, savedInstanceState)
+        mViewPager.adapter = DemoCollectionPagerAdapter(
+            childFragmentManager,
+            activity,
+            activity as ResultProvider?,
+            mSearchProvider
+        )
     }
 
-    override fun searchAndDisplayItems() {
-        TODO("Not yet implemented")
+    override fun onResume() {
+        super.onResume()
+
+        // TODO: set the correct page to display
+        val pageToDisplay = 0
+
+        mViewPager.currentItem = pageToDisplay
     }
 }
