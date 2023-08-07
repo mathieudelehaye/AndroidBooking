@@ -21,10 +21,15 @@
 
 package com.android.java.androiddemo.controller.tabview
 
+import android.graphics.drawable.Drawable
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ImageSpan
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.android.java.androiddemo.controller.tabview.home.DemoFragmentHome
+import com.android.java.androiddemo.controller.tabview.order.DemoFragmentOrderList
 import com.android.java.androiddemo.controller.tabview.profile.DemoFragmentProfileMenu
 import com.android.java.androiddemo.controller.tabview.saved.DemoFragmentSavedList
 import com.android.java.androidjavatools.controller.tabview.CollectionPagerAdapter
@@ -39,13 +44,28 @@ class DemoCollectionPagerAdapter(
 ) : CollectionPagerAdapter(fm, fa, rProvider, sProvider) {
 
     override fun findTabFragment(i: Int): Fragment {
-        val fragment: Fragment
-        when (i) {
-            0 -> fragment = DemoFragmentHome(mResultProvider)
-            1 -> fragment = DemoFragmentSavedList(mResultProvider, mSearchProvider)
-            else -> fragment = DemoFragmentProfileMenu()
+        val fragment: Fragment = when (i) {
+            0 -> DemoFragmentHome(mResultProvider)
+            1 -> DemoFragmentSavedList(mResultProvider, mSearchProvider)
+            2 -> DemoFragmentOrderList()
+            else -> DemoFragmentProfileMenu()
         }
 
         return fragment
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        val image: Drawable = when (position) {
+            0 -> mActivity.resources.getDrawable(com.android.java.androidjavatools.R.drawable.magnify)
+            1 -> mActivity.resources.getDrawable(com.android.java.androidjavatools.R.drawable.heart_outline)
+            2 -> mActivity.resources.getDrawable(com.android.java.androiddemo.R.drawable.bag_suitcase_outline)
+            3 -> mActivity.resources.getDrawable(com.android.java.androidjavatools.R.drawable.dots_horizontal)
+            else -> mActivity.resources.getDrawable(com.android.java.androidjavatools.R.drawable.dots_horizontal)
+        }
+        image.setBounds(0, 0, image.intrinsicWidth, image.intrinsicHeight)
+        val sb = SpannableString(" ")
+        val imageSpan = ImageSpan(image, ImageSpan.ALIGN_BOTTOM)
+        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        return sb
     }
 }
