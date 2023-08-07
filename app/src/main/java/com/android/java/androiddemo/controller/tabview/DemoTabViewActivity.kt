@@ -21,6 +21,7 @@
 
 package com.android.java.androiddemo.controller.tabview
 
+import com.android.java.androiddemo.controller.tabview.search.DemoFragmentSuggestion
 import com.android.java.androidjavatools.R
 import com.android.java.androidjavatools.controller.tabview.TabViewActivity
 import com.android.java.androidjavatools.controller.template.Navigator
@@ -32,6 +33,7 @@ class DemoTabViewActivity : TabViewActivity() {
         )
 
         mNavigator.declareFragment("tab", DemoFragmentTabView::class.java)
+        mNavigator.declareFragment("suggestion", DemoFragmentSuggestion::class.java)
 
         mNavigator.showFragment("tab")
     }

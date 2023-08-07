@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">AndroidDemo</string>
+    <string name="app_name" translatable="false">AndroidDemo</string>
+    <string name="search_hint" translatable="false">Enter destination</string>
 </resources>
