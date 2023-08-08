@@ -21,12 +21,34 @@
 
 package com.android.java.androiddemo.controller.tabview
 
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.android.java.androiddemo.controller.tabview.search.DemoFragmentSuggestion
 import com.android.java.androidjavatools.R
 import com.android.java.androidjavatools.controller.tabview.TabViewActivity
 import com.android.java.androidjavatools.controller.template.Navigator
 
 class DemoTabViewActivity : TabViewActivity() {
+    @SuppressLint("UseCompatLoadingForDrawables")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Set layout background
+        val coordinatorLayout = findViewById<View>(
+            R.id.main_activity_layout
+        ) as CoordinatorLayout
+        coordinatorLayout.background = resources.getDrawable(com.android.java.androiddemo.R.drawable.background)
+
+        // Set layout logo icon
+        val mainActivityIcon: ImageView = findViewById<View>(
+            R.id.main_activity_icon
+        ) as ImageView
+        mainActivityIcon.setImageResource(com.android.java.androiddemo.R.drawable.brand_logo)
+    }
+
     override fun createNavigator() {
         mNavigator = Navigator(
             this, R.id.main_activity_layout
