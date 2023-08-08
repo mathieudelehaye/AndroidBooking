@@ -25,8 +25,8 @@ import android.app.Activity
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.android.java.androidjavatools.R
 import com.android.java.androidjavatools.controller.tabview.home.ProductBrowserView
 import com.android.java.androidjavatools.controller.tabview.product.FragmentProductSelection
 import com.android.java.androidjavatools.controller.tabview.search.SearchBox
@@ -45,20 +45,16 @@ class DemoProductBrowserView(activity: Activity,
     override fun browserView(
     ) {
         val images = intArrayOf(
-            R.drawable.product01, R.drawable.product02, R.drawable.product03,
-            R.drawable.product04, R.drawable.product05)
+            com.android.java.androiddemo.R.drawable.discount01, com.android.java.androiddemo.R.drawable.discount02,
+            com.android.java.androiddemo.R.drawable.discount03)
 
         Column {
             Spacer(modifier = Modifier.height(56.dp))
             mSearchBox.show()
 
             Spacer(modifier = Modifier.height(5.dp))
-            browserPager("Sustainable Brands", images) {
+            browserPager("Enjoy our new discounts", images, ContentScale.FillBounds) {
                 FragmentProductSelection.setFilterField("sustainable")
-                mNavigatorManager!!.navigator().showFragment("products")
-            }
-            browserPager("Popular products", images) {
-                FragmentProductSelection.setFilterField("popular")
                 mNavigatorManager!!.navigator().showFragment("products")
             }
         }
