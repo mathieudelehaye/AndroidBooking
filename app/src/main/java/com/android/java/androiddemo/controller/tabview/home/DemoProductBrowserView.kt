@@ -45,15 +45,19 @@ class DemoProductBrowserView(activity: Activity,
     override fun browserView(
     ) {
         val images = intArrayOf(
-            com.android.java.androiddemo.R.drawable.discount01, com.android.java.androiddemo.R.drawable.discount02,
-            com.android.java.androiddemo.R.drawable.discount03)
+            com.android.java.androiddemo.R.drawable.discount01,
+            com.android.java.androiddemo.R.drawable.discount02,
+            com.android.java.androiddemo.R.drawable.discount03
+        )
 
         Column {
             Spacer(modifier = Modifier.height(56.dp))
             mSearchBox.show()
 
-            Spacer(modifier = Modifier.height(5.dp))
-            browserPager("Enjoy our new discounts", images, ContentScale.FillBounds) {
+            Spacer(modifier = Modifier
+                .height(5.dp)
+            )
+            browserPager("Enjoy your new discounts", images, ContentScale.FillBounds) {
                 FragmentProductSelection.setFilterField("sustainable")
                 mNavigatorManager!!.navigator().showFragment("products")
             }
