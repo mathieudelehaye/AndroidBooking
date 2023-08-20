@@ -36,8 +36,8 @@
         </activity>
 
         <provider
-            android:name="com.android.java.androidjavatools.controller.tabview.search.SearchSuggestionProvider"
-            android:authorities="com.android.java.androidjavatools.controller.tabview.search.SearchSuggestionProvider"
+            android:name="com.android.java.androiddemo.controller.tabview.search.DemoSearchSuggestionProvider"
+            android:authorities="com.android.java.androiddemo.controller.tabview.search.DemoSearchSuggestionProvider"
         />
     </application>
 </manifest>
