@@ -27,6 +27,7 @@ import android.os.Bundle
 import android.view.View
 import com.android.java.androiddemo.R
 import com.android.java.androidjavatools.controller.tabview.home.FragmentHome
+import com.android.java.androidjavatools.controller.tabview.home.ProductBrowserView
 import com.android.java.androidjavatools.controller.template.ResultProvider
 
 class DemoFragmentHome(provider : ResultProvider) : FragmentHome(provider) {
@@ -40,5 +41,9 @@ class DemoFragmentHome(provider : ResultProvider) : FragmentHome(provider) {
 
     override fun searchAndDisplayItems() {
         TODO("Not yet implemented")
+    }
+
+    override fun getProductBrowserView(): ProductBrowserView {
+        return DemoProductBrowserView(requireActivity(), this, mBinding, mResultProvider, mSearchBox)
     }
 }
