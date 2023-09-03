@@ -19,14 +19,14 @@
 //  You should have received a copy of the GNU Affero General Public License along with this program. If not, see
 //  <https://www.gnu.org/licenses/>.
 
-package com.android.java.androiddemo.model
+package com.android.java.androiddemo.model.result
 
 import com.android.java.androidjavatools.model.result.ResultInfo
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DemoResultInfo(database : FirebaseFirestore) : ResultInfo(database) {
     override fun getCollectionName(): String {
-        return "recyclePointInfos"
+        return "accommodations"
     }
 
     override fun getExtraSnippetInfoAtIndex(i : Int): String? {

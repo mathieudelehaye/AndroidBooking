@@ -36,7 +36,7 @@ class DemoFragmentHome(provider : ResultProvider) : FragmentHome(provider) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState);
-        mSharedPref = mContext.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
+        mSharedPref = mContext.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
     }
 
     override fun searchAndDisplayItems() {

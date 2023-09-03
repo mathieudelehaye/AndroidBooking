@@ -21,7 +21,7 @@
 
 package com.android.java.androiddemo.controller.tabview.search
 
-import com.android.java.androiddemo.model.DemoResultInfo
+import com.android.java.androiddemo.model.result.DemoResultInfo
 import com.android.java.androidjavatools.controller.tabview.search.SearchResultProvider
 import com.android.java.androidjavatools.model.result.ResultInfo
 import com.google.firebase.firestore.FirebaseFirestore
