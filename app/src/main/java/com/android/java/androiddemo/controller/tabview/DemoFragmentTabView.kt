@@ -23,11 +23,11 @@ package com.android.java.androiddemo.controller.tabview
 
 import android.os.Bundle
 import android.view.View
-import com.android.java.androiddemo.controller.tabview.search.DemoSearchResultProvider
 import com.android.java.androidjavatools.controller.tabview.FragmentTabView
 import com.android.java.androidjavatools.controller.template.ResultProvider
+import com.android.java.androidjavatools.controller.template.SearchProvider
 
-class DemoFragmentTabView : FragmentTabView(DemoSearchResultProvider()) {
+class DemoFragmentTabView(provider : SearchProvider) : FragmentTabView(provider) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewPager.adapter = DemoCollectionPagerAdapter(

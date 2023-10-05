@@ -26,10 +26,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.android.java.androiddemo.controller.tabview.result.list.DemoFragmentResultList
 import com.android.java.androiddemo.controller.tabview.search.DemoFragmentSuggestion
+import com.android.java.androiddemo.controller.tabview.search.DemoSearchResultProvider
 import com.android.java.androidjavatools.R
 import com.android.java.androidjavatools.controller.tabview.TabViewActivity
 import com.android.java.androidjavatools.controller.template.Navigator
+import com.android.java.androidjavatools.controller.template.SearchProvider
 
 class DemoTabViewActivity : TabViewActivity() {
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -54,8 +57,13 @@ class DemoTabViewActivity : TabViewActivity() {
             this, R.id.main_activity_layout
         )
 
-        mNavigator.declareFragment("tab", DemoFragmentTabView::class.java)
+        val searchResultProvider = DemoSearchResultProvider()
+
+        mNavigator.declareFragment("tab", DemoFragmentTabView::class.java, Navigator.FragmentArgument(
+            SearchProvider::class.java, searchResultProvider))
         mNavigator.declareFragment("suggestion", DemoFragmentSuggestion::class.java)
+        mNavigator.declareFragment("list", DemoFragmentResultList::class.java, Navigator.FragmentArgument(
+            SearchProvider::class.java, searchResultProvider))
 
         mNavigator.showFragment("tab")
     }

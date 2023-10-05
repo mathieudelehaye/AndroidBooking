@@ -21,6 +21,7 @@
 
 package com.android.java.androiddemo.controller.tabview
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.text.Spannable
 import android.text.SpannableString
@@ -43,6 +44,7 @@ class DemoCollectionPagerAdapter(
     sProvider: SearchProvider?
 ) : CollectionPagerAdapter(fm, fa, rProvider, sProvider) {
 
+    // TODO: check if the fragments be stored in a hashtable, rather than re-creating them each time.
     override fun findTabFragment(i: Int): Fragment {
         val fragment: Fragment = when (i) {
             0 -> DemoFragmentHome(mResultProvider)
@@ -54,6 +56,7 @@ class DemoCollectionPagerAdapter(
         return fragment
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun getPageTitle(position: Int): CharSequence? {
         val image: Drawable = when (position) {
             0 -> mActivity.resources.getDrawable(com.android.java.androidjavatools.R.drawable.magnify)
