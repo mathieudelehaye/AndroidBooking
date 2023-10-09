@@ -21,7 +21,16 @@
 
 package com.android.java.androiddemo.controller.tabview.result.list
 
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import com.android.java.androidjavatools.Helpers
 import com.android.java.androidjavatools.controller.tabview.result.list.FragmentResultList
 import com.android.java.androidjavatools.controller.template.SearchProvider
 
-class DemoFragmentResultList(provider : SearchProvider) : FragmentResultList(provider)
+class DemoFragmentResultList(provider : SearchProvider) : FragmentResultList(provider) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.v("AJT", "Result list view created at timestamp: " + Helpers.getTimestamp())
+        super.onViewCreated(view, savedInstanceState)
+    }
+}
