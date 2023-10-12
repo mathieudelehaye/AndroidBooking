@@ -62,8 +62,12 @@ class DemoTabViewActivity : TabViewActivity() {
         mNavigator.declareFragment("tab", DemoFragmentTabView::class.java, Navigator.FragmentArgument(
             SearchProvider::class.java, searchResultProvider))
         mNavigator.declareFragment("suggestion", DemoFragmentSuggestion::class.java)
-        mNavigator.declareFragment("list", DemoFragmentResultList::class.java, Navigator.FragmentArgument(
-            SearchProvider::class.java, searchResultProvider))
+
+        // Some fragments need to be created straightforward, as they require their container view created and a
+        // context, in order to instantiate some properties. So, it cannot happen when the fragment is shown for
+        // the first time.
+        mNavigator.declareAndCreateFragment("list", DemoFragmentResultList::class.java,
+            Navigator.FragmentArgument(SearchProvider::class.java, searchResultProvider))
 
         mNavigator.showFragment("tab")
     }
