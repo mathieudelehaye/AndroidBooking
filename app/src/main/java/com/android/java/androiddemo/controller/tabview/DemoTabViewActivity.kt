@@ -24,15 +24,19 @@ package com.android.java.androiddemo.controller.tabview
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.android.java.androiddemo.controller.tabview.result.list.DemoFragmentResultList
 import com.android.java.androiddemo.controller.tabview.search.DemoFragmentSuggestion
 import com.android.java.androiddemo.controller.tabview.search.DemoSearchResultProvider
+import com.android.java.androiddemo.model.user.DemoAuthManager
 import com.android.java.androidjavatools.R
 import com.android.java.androidjavatools.controller.tabview.TabViewActivity
+import com.android.java.androidjavatools.controller.tabview.auth.AuthenticateDialogListener.SigningDialogCredentialViews
 import com.android.java.androidjavatools.controller.template.Navigator
 import com.android.java.androidjavatools.controller.template.SearchProvider
+import com.android.java.androidjavatools.model.user.AuthManager
 
 class DemoTabViewActivity : TabViewActivity() {
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -69,7 +73,18 @@ class DemoTabViewActivity : TabViewActivity() {
         mNavigator.declareAndCreateFragment("list", DemoFragmentResultList::class.java,
             Navigator.FragmentArgument(SearchProvider::class.java, searchResultProvider))
 
-        mNavigator.showFragment("tab")
+        // TODO: do not commit this auto authentication
+        val am = DemoAuthManager(this)
+        val emailEditText = EditText(this)
+        emailEditText.setText("mathieu.delehaye@gmail.com")
+        val passwordEditText = EditText(this)
+        passwordEditText.setText("XXX")
+        AuthManager.setAppFirstFragment("tab")
+        am.onDialogRegisteredSignInClick(null, SigningDialogCredentialViews(
+            emailEditText,
+            passwordEditText,
+            passwordEditText
+        ))
     }
 
     override fun onEnvironmentConditionCheck(): Boolean {
