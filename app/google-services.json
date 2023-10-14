@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "991639478812",
+    "project_id": "accoletting",
+    "storage_bucket": "accoletting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991639478812:android:55db6d9a2c17951a0fb5d9",
+        "android_client_info": {
+          "package_name": "com.android.java.androiddemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991639478812-dc9ic48v8ii7aosj1dg9rcejn81q5rur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdRjjaE_sYsrZj5LZw3nW8hSB1yvZR-cw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991639478812-dc9ic48v8ii7aosj1dg9rcejn81q5rur.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "991639478812-auu3gjkdajl3phhue85el8mmscvnb8cn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.android.java.androiddemo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 //
-//  DemoFragmentHome.kt
+//  DemoFragmentSavedList.kt
 //
 //  Created by Mathieu Delehaye on 6/08/2023.
 //
@@ -19,31 +19,41 @@
 //  You should have received a copy of the GNU Affero General Public License along with this program. If not, see
 //  <https://www.gnu.org/licenses/>.
 
-package com.android.java.androiddemo.controller.tabview.home
+package com.android.java.androiddemo.controller.tabview.saved
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.android.java.androiddemo.R
-import com.android.java.androidjavatools.controller.tabview.home.FragmentHome
-import com.android.java.androidjavatools.controller.tabview.home.ProductBrowserView
+import com.android.java.androiddemo.controller.tabview.DemoTabViewActivity
+import com.android.java.androidjavatools.controller.tabview.saved.FragmentSavedList
 import com.android.java.androidjavatools.controller.template.ResultProvider
+import com.android.java.androidjavatools.controller.template.SearchProvider
 
-class DemoFragmentHome(provider : ResultProvider) : FragmentHome(provider) {
+class DemoFragmentSavedList(rProvider : ResultProvider, sProvider : SearchProvider)
+    : FragmentSavedList(rProvider, sProvider) {
 
-    var mSharedPref : SharedPreferences? = null
+    private var mActivity : DemoTabViewActivity? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState);
-        mSharedPref = mContext.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+
+        mActivity = activity as DemoTabViewActivity;
+        setToolbarBackgroundColor(R.color.white)
+        setToolbarBackButtonVisibility(false)
     }
 
-    override fun searchAndDisplayItems() {
-        TODO("Not yet implemented")
-    }
+    // TODO: move this method logic to the library parent class
+    override fun setUserVisibleHint(isVisibleToUser : Boolean) {
+        if (mActivity == null) {
+            return;
+        }
 
-    override fun getProductBrowserView(): ProductBrowserView {
-        return DemoProductBrowserView(requireActivity(), this, mBinding, mResultProvider, mSearchBox)
+        Log.d("ADM", "Saved view becomes " + (if (isVisibleToUser) "visible" else "invisible"))
+        Log.v("ADM", (if (isVisibleToUser) "Hiding" else "Showing") + " the app regular toolbar")
+
+        mActivity!!.toggleToolbar(!isVisibleToUser);
+
+        super.setUserVisibleHint(isVisibleToUser);
     }
 }
