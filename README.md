@@ -1,4 +1,4 @@
-# AndroidDemo
+# AndroidBooking
 A generic Android app reusing the homemade framework AndroidJavaTools.
 
 This is a clone of an online travel agency app, like [Booking.com](https://www.booking.com). 
